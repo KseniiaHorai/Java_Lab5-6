@@ -1,17 +1,54 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import org.example.PassengerBaseCar;
+import org.example.CoachCar;
+import org.example.FirstClassCar;
+import org.example.BusinessCar;
+import org.example.BaseCar;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+        List<PassengerBaseCar> cars = createTrain();
+        MyTrain train = new MyTrain(cars);
+        System.out.println("UNSORTED CARS:");
+        printCars(train.cars);
+
+        List<Integer> totalPassengersAndBags = train.calculateTotalPassengersAndBags();
+        System.out.println("NUMBER OF PASSENGERS: " + totalPassengersAndBags.get(0));
+        System.out.println("NUMBER OF BAGS: " + totalPassengersAndBags.get(1));
+
+        System.out.println("SORT CARS - COMFORT:");
+        List<PassengerBaseCar> comfortCars = train.sortCars();
+        printCars(comfortCars);
+    }
+
+    private static void printCars(List<PassengerBaseCar> cars) {
+        for (PassengerBaseCar car : cars) {
+            System.out.println(car);
         }
+    }
+
+    private static List<PassengerBaseCar> createTrain() {
+
+        CoachCar car1Coach = new CoachCar(45, 50);
+        BusinessCar car2Business = new BusinessCar(20, 23);
+        FirstClassCar car3FirstClass = new FirstClassCar(10, 9);
+        BusinessCar car4FirstClass = new BusinessCar(38, 45);
+        FirstClassCar car5FirstClass = new FirstClassCar(5, 5);
+        CoachCar car6Coach = new CoachCar(155, 200);
+
+        List<PassengerBaseCar> testCars = new ArrayList<>();
+        testCars.add(car1Coach);
+        testCars.add(car2Business);
+        testCars.add(car3FirstClass);
+        testCars.add(car4FirstClass);
+        testCars.add(car5FirstClass);
+        testCars.add(car6Coach);
+
+        return testCars;
     }
 }
