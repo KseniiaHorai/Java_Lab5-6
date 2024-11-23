@@ -8,9 +8,17 @@ import org.example.BaseCar;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * MAIN: Demonstrates the creation and usage of different types of train cars.
+ * You can see how train cars are initialized, added to a train, and then
+ * processed for tasks such as calculating totals and sorting by comfort level.
+ */
 public class Main {
-
+    /**
+     * Main entry point of the program.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         List<PassengerBaseCar> cars = createTrain();
         MyTrain train = new MyTrain(cars);
@@ -25,13 +33,22 @@ public class Main {
         List<PassengerBaseCar> comfortCars = train.sortCars();
         printCars(comfortCars);
     }
-
+    /**
+     * Prints a list of train cars.
+     *
+     * @param cars The list of train cars to print.
+     */
     private static void printCars(List<PassengerBaseCar> cars) {
         for (PassengerBaseCar car : cars) {
             System.out.println(car);
         }
     }
 
+    /**
+     * Creates and returns a list of train cars.
+     *
+     * @return A list of initialized train cars with different configurations.
+     */
     private static List<PassengerBaseCar> createTrain() {
 
         CoachCar car1Coach = new CoachCar(45, 50);
